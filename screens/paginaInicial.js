@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, Image, StyleSheet, SafeAreaView, Button } from 'react-native';
 
 
 const styles = StyleSheet.create({
@@ -55,9 +55,10 @@ const paginaInicial = ({navigation}) => {
       <View style={styles.topContainer}>
         <SafeAreaView>
           <View>
-           <Button onPress={() => navigation.navigate('selecaoHospital')}
-             title="Let's Go!"
-             color="#DAEAF1"
+           <Button 
+            onPress={() => navigation.navigate('selecaoHospital')}
+            title="Let's Go!"
+            color="#001D6E"
            />
           </View>
         </SafeAreaView>

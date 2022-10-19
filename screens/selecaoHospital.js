@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, SafeAreaView, Button } from 'react-native';
+import SelectList from 'react-native-dropdown-select-list'
 
 
 const styles = StyleSheet.create({
@@ -35,20 +36,53 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     color: '#001D6E'
+  },
+  dropDown: {
+    width: 100,
+    color: '#C4DDFF'
   }
 });
 
 const selecaoHospital = ({navigation}) => {
+  const [selected, setSelected] = React.useState("");
+  const data = [{key:'2', value:'Porto'}, {key:'3', value:'Lisboa'}];
+  const data2 = [{key:'4', value:'São João'}, {key:'5', value:'Santo António'}];
+
   return (
     <View style={styles.page}>
       <View style={styles.topContainer}>
         <Text style={styles.baseText}>
-          Let's Go!
+          Selecione o hospital
         </Text>
       </View>
+      <View>
+        <SelectList 
+        style={styles.dropDown}
+        setSelected={setSelected} data={data}
+        defaultOption={{ key:'1', value:'Distrito' }} 
+        />
+      </View>
+      <View>
+        <SelectList 
+        style={styles.dropDown}
+        setSelected={setSelected} data={data2}
+        defaultOption={{ key:'1', value:'Hospital' }} 
+        />
+      </View>
+      <View>
+        <SafeAreaView>
+          <View>
+           <Button 
+            onPress={() => navigation.navigate('selecaoHospital')}
+            title="OK"
+            color="#001D6E"
+           />
+          </View>
+        </SafeAreaView>
+      </View>
     </View>
-
   );
 }
+
 
 export default selecaoHospital;
