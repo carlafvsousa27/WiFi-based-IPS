@@ -4,23 +4,18 @@ import { View, Text, Image, StyleSheet, SafeAreaView, Button } from 'react-nativ
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: '#C4DDFF',
+    backgroundColor: '#DFF6FF',
     height: 667,
   },
   topContainer: {
     paddingTop: 110,
     paddingBottom: 30,
-    backgroundColor: '#C4DDFF',
+    backgroundColor: '#DFF6FF',
     alignItems: 'center'
   },
   mediumContainer: {
     paddingTop: 40,
-    backgroundColor: '#C4DDFF',
-    alignItems: 'center'
-  },
-  bottomContainer: {
-    paddingTop: 20,
-    backgroundColor: '#C4DDFF',
+    backgroundColor: '#DFF6FF',
     alignItems: 'center'
   },
   logo: {
@@ -49,15 +44,15 @@ const paginaInicial = ({navigation}) => {
       <View style={styles.mediumContainer}>
         <Image 
           style={styles.logo}
-          source={require('../assets/Wips.png')}>
+          source={require('../assets/Wips4.png')}>
         </Image>
       </View>
-      <View style={styles.topContainer}>
+      <View>
         <SafeAreaView>
-          <View>
+          <View style={{paddingHorizontal: 30, paddingTop: 110, alignItems: 'center', backgroundColor: '#DFF6FF', borderRadius:4}}>
            <Button 
             onPress={() => navigation.navigate('selecaoHospital')}
-            title="Let's Go!"
+            title="     Let's Go!     "
             color="#001D6E"
            />
           </View>
