@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Button, TextInput  } from 'react-native';
+import { View, Text, Image, StyleSheet, Button, TextInput } from 'react-native';
+import SelectList from 'react-native-dropdown-select-list'
+
 
 
 const styles = StyleSheet.create({
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 35,
-    width:300,
+    width: 300,
     backgroundColor: "#D9D7F1",
     margin: 12,
     borderWidth: 1,
@@ -61,40 +63,42 @@ const styles = StyleSheet.create({
 
 });
 
-const trajeto = ({navigation}) => {
-    const [number, onChangeNumber] = React.useState(null);
-    return (
-        <View style={styles.page}>
-            <View style={styles.topContainer}>
-                <View style={styles.outputContainer}>
-                    <Text style={styles.baseText}>
-                        Localização atual
-                    </Text>
-                </View>
-            </View>
-            <View style={styles.mediumContainer}>
-                <View>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={onChangeNumber}
-                        value={number}
-                        placeholder="Destino?"
-                        keyboardType="numeric"
-                    />
-                </View>
-            </View>
-            <View style={styles.bottomContainer}>
-                <View style={{paddingHorizontal:110, borderRadius:4, alignItems: "left" }}>
-                    <Button
-                        onPress={() => navigation.goBack()}
-                        title="Go back"
-                        color="#001D6E"
-                    />
-                </View>
-            </View>
-    
+const trajeto = ({ navigation }) => {
+  const [number, onChangeNumber] = React.useState(null);
+  const [selected, setSelected] = React.useState("");
+  const data = [{ key: '2', value: 'Gabinete 1.1' }, { key: '3', value: 'Gabinete 2.2' }, { key: '4', value: 'Gabinete 3.3' }];
+
+
+  return (
+    <View style={styles.page}>
+      <View style={styles.topContainer}>
+        <View style={styles.outputContainer}>
+          <Text style={styles.baseText}>
+            Localização atual
+          </Text>
         </View>
-    );
-  }
-  
-  export default trajeto;
+      </View>
+      <View style={styles.mediumContainer}>
+        <View>
+          <SelectList
+            setSelected={setSelected} data={data}
+            defaultOption={{ key: '1', value: 'Destino?' }}
+            boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7", height: 35, width: 300, backgroundColor: "#D9D7F1", alignItems: 'left', paddingHorizontal: 10, paddingVertical: 5 }}
+          />
+        </View>
+      </View>
+      <View style={styles.bottomContainer}>
+        <View style={{ paddingHorizontal: 110, borderRadius: 4, alignItems: "left" }}>
+          <Button
+            onPress={() => navigation.goBack()}
+            title="Go back"
+            color="#001D6E"
+          />
+        </View>
+      </View>
+
+    </View>
+  );
+}
+
+export default trajeto;
