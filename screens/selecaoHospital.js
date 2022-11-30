@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
+import { getAllHospitals } from './baseAPI';
+import { getAllDistricts } from './baseAPI';
 import { View, Text, Image, StyleSheet, SafeAreaView, Button } from 'react-native';
 import SelectList from 'react-native-dropdown-select-list'
 
@@ -39,10 +42,26 @@ const styles = StyleSheet.create({
   }
 });
 
-const selecaoHospital = ({navigation}) => {
+const selecaoHospital = ({ navigation }) => {
   const [selected, setSelected] = React.useState("");
-  const data = [{key:'2', value:'Porto'}, {key:'3', value:'Lisboa'}];
-  const data2 = [{key:'4', value:'São João'}, {key:'5', value:'Santo António'}];
+  const [hospitals, setHospitals] = React.useState([]);
+  useEffect(() => {
+    getAllHospitals().then(response => setHospitals(response))
+  }, [])
+  useEffect(() => {
+    console.log(hospitals)
+  }, [hospitals])
+
+  const [districts, setDistricts] = React.useState([]);
+  useEffect(() => {
+    getAllDistricts().then(response => setDistricts(response))
+  }, [])
+  useEffect(() => {
+    console.log(districts)
+  }, [districts])
+
+
+
 
   return (
     <View style={styles.page}>
@@ -51,35 +70,35 @@ const selecaoHospital = ({navigation}) => {
           Selecione o hospital
         </Text>
       </View>
-      <View style={{paddingHorizontal:30, paddingTop:30}}>
-        <SelectList 
-        setSelected={setSelected} data={data}
-        defaultOption={{ key:'1', value:'Distrito' }} 
-        boxStyles={{borderRadius:6, backgroundColor:"#6EC2F7"}}
-        inputStyles={{color:"#001D6E", fontWeight: "bold"}}
+      <View style={{ paddingHorizontal: 30, paddingTop: 30 }}>
+        <SelectList
+          setSelected={setSelected} data={districts}
+          defaultOption={{ key: '1', value: 'Distrito' }}
+          boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7" }}
+          inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
         />
       </View>
-      <View style={{paddingHorizontal:30, paddingTop:20}}>
-        <SelectList 
-        setSelected={setSelected} data={data2}
-        defaultOption={{ key:'1', value:'Hospital' }} 
-        boxStyles={{borderRadius:6, backgroundColor:"#6EC2F7"}}
-        inputStyles={{color:"#001D6E", fontWeight: "bold"}}
+      <View style={{ paddingHorizontal: 30, paddingTop: 20 }}>
+        <SelectList
+          setSelected={setSelected} data={hospitals}
+          defaultOption={{ key: '1', value: 'Hospital' }}
+          boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7" }}
+          inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
         />
       </View>
       <View>
         <SafeAreaView>
-          <View style={{paddingHorizontal:110, paddingTop:50, borderRadius:4 }}>
-           <Button
-            onPress={() => navigation.navigate('trajeto')}
-            title="OK"
-            color="#001D6E"
-           />
+          <View style={{ paddingHorizontal: 110, paddingTop: 50, borderRadius: 4 }}>
+            <Button
+              onPress={() => navigation.navigate('trajeto')}
+              title="OK"
+              color="#001D6E"
+            />
           </View>
         </SafeAreaView>
       </View>
       <View style={styles.mediumContainer}>
-        <Image 
+        <Image
           style={styles.logo}
           source={require('../assets/Wips4.png')}>
         </Image>

@@ -1,0 +1,128 @@
+{
+    "districts": [
+        {
+            "key": 1,
+            "value": "Aveiro"
+        },
+        {
+            "key": 2,
+            "value": "Beja"
+        },
+        {
+            "key": 3,
+            "value": "Braga"
+        },
+        {
+            "key": 4,
+            "value": "Bragança"
+        },
+        {
+            "key": 5,
+            "value": "Castelo Branco"
+        },
+        {
+            "key": 6,
+            "value": "Coimbra"
+        },
+        {
+            "key": 7,
+            "value": "Évora"
+        },
+        {
+            "key": 8,
+            "value": "Faro"
+        },
+        {
+            "key": 9,
+            "value": "Guarda"
+        },
+        {
+            "key": 10,
+            "value": "Leiria"
+        },
+        {
+            "key": 11,
+            "value": "Lisboa"
+        },
+        {
+            "key": 12,
+            "value": "Portalegre"
+        },
+        {
+            "key": 13,
+            "value": "Porto"
+        },
+        {
+            "key": 14,
+            "value": "Santarém"
+        },
+        {
+            "key": 15,
+            "value": "Setúbal"
+        },
+        {
+            "key": 16,
+            "value": "Viana do Castelo"
+        },
+        {
+            "key": 17,
+            "value": "Vila Real"
+        },
+        {
+            "key": 18,
+            "value": "Viseu"
+        }
+    ],
+    "hospitals": [
+        {
+            "key": 1,
+            "value": "Hospital da Arrábia"
+        },
+        {
+            "key": 2,
+            "value": "Hospital CUF"
+        },
+        {
+            "key": 3,
+            "value": "Hospital Geral de Santo António"
+        },
+        {
+            "key": 4,
+            "value": "Lusíadas"
+        },
+        {
+            "key": 5,
+            "value": "Hospital da Prelada"
+        },
+        {
+            "key": 6,
+            "value": "Hospital São João"
+        },
+        {
+            "key": 7,
+            "value": "Hospital Trofa Saúde"
+        }
+    ],
+    "locals": [
+        {
+            "key": 1,
+            "value": "Entrada",
+            "icon": "../assets/entrada.png"
+        },
+        {
+            "key": 2,
+            "value": "Sala de espera",
+            "icon": "../assets/salaDeEspera.png"
+        },
+        {
+            "key": 3,
+            "value": "Gabinete 1",
+            "icon": "../assets/médico.png"
+        },
+        {
+            "key": 4,
+            "value": "WC",
+            "icon": "../assets/wc.png"
+        }
+    ]
+}

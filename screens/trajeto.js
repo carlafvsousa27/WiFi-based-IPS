@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
+import { getAllLocals } from './baseAPI';
 import { View, Text, Image, StyleSheet, Button, TextInput } from 'react-native';
 import SelectList from 'react-native-dropdown-select-list'
 
@@ -66,22 +68,41 @@ const styles = StyleSheet.create({
 const trajeto = ({ navigation }) => {
   const [number, onChangeNumber] = React.useState(null);
   const [selected, setSelected] = React.useState("");
-  const data = [{ key: '2', value: 'Gabinete 1.1' }, { key: '3', value: 'Gabinete 2.2' }, { key: '4', value: 'Gabinete 3.3' }];
+  const [locals, setLocals] = React.useState([]);
+  useEffect(() => {
+    getAllLocals().then(response => setLocals(response))
+  }, [])
+  useEffect(() => {
+    console.log(locals)
+  }, [locals])
 
+
+
+  /* const trajeto1 = (start, finish) => {
+    switch (true) {
+      case start == 2 && finish == 6:
+        return
+
+    }
+  }
+
+  */
 
   return (
     <View style={styles.page}>
       <View style={styles.topContainer}>
-        <View style={styles.outputContainer}>
-          <Text style={styles.baseText}>
-            Localização atual
-          </Text>
+        <View>
+          <SelectList
+            setSelected={setSelected} data={locals}
+            defaultOption={{ key: '1', value: 'Onde se encontra?' }}
+            boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7", height: 35, width: 300, backgroundColor: "#D9D7F1", alignItems: 'left', paddingHorizontal: 10, paddingVertical: 5 }}
+          />
         </View>
       </View>
       <View style={styles.mediumContainer}>
         <View>
           <SelectList
-            setSelected={setSelected} data={data}
+            setSelected={setSelected} data={locals}
             defaultOption={{ key: '1', value: 'Destino?' }}
             boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7", height: 35, width: 300, backgroundColor: "#D9D7F1", alignItems: 'left', paddingHorizontal: 10, paddingVertical: 5 }}
           />
