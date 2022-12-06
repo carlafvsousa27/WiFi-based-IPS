@@ -33,28 +33,28 @@ const styles = StyleSheet.create({
   }
 });
 
-const paginaInicial = ({navigation}) => {
+const paginaInicial = ({ navigation }) => {
   return (
     <View style={styles.page}>
       <View style={styles.topContainer}>
         <Text style={styles.titleText}>
-          Welcome
+          Bem-vindo
         </Text>
       </View>
       <View style={styles.mediumContainer}>
-        <Image 
+        <Image
           style={styles.logo}
           source={require('../assets/Wips4.png')}>
         </Image>
       </View>
       <View>
         <SafeAreaView>
-          <View style={{paddingHorizontal: 30, paddingTop: 110, alignItems: 'center', backgroundColor: '#DFF6FF', borderRadius:4}}>
-           <Button 
-            onPress={() => navigation.navigate('selecaoHospital')}
-            title="     Let's Go!     "
-            color="#001D6E"
-           />
+          <View style={{ paddingHorizontal: 30, paddingTop: 110, alignItems: 'center', backgroundColor: '#DFF6FF', borderRadius: 4 }}>
+            <Button
+              onPress={() => navigation.navigate('selecaoHospital')}
+              title="     Let's Go!     "
+              color="#001D6E"
+            />
           </View>
         </SafeAreaView>
       </View>

@@ -1,76 +1,44 @@
 {
     "districts": [
         {
-            "key": 1,
-            "value": "Aveiro"
+            "id": 1,
+            "name": "Braga",
+            "shape": "circle",
+            "radius": 25,
+            "x1": 105,
+            "y1": 55,
+            "prefill": "#C8C8C8",
+            "fill": "#E05858"
         },
         {
-            "key": 2,
-            "value": "Beja"
+            "id": 2,
+            "name": "Porto",
+            "shape": "circle",
+            "radius": 25,
+            "x1": 100,
+            "y1": 90,
+            "prefill": "#C8C8C8",
+            "fill": "#E05858"
         },
         {
-            "key": 3,
-            "value": "Braga"
+            "id": 3,
+            "name": "Coimbra",
+            "shape": "circle",
+            "radius": 25,
+            "x1": 80,
+            "y1": 200,
+            "prefill": "#C8C8C8",
+            "fill": "#E05858"
         },
         {
-            "key": 4,
-            "value": "Bragança"
-        },
-        {
-            "key": 5,
-            "value": "Castelo Branco"
-        },
-        {
-            "key": 6,
-            "value": "Coimbra"
-        },
-        {
-            "key": 7,
-            "value": "Évora"
-        },
-        {
-            "key": 8,
-            "value": "Faro"
-        },
-        {
-            "key": 9,
-            "value": "Guarda"
-        },
-        {
-            "key": 10,
-            "value": "Leiria"
-        },
-        {
-            "key": 11,
-            "value": "Lisboa"
-        },
-        {
-            "key": 12,
-            "value": "Portalegre"
-        },
-        {
-            "key": 13,
-            "value": "Porto"
-        },
-        {
-            "key": 14,
-            "value": "Santarém"
-        },
-        {
-            "key": 15,
-            "value": "Setúbal"
-        },
-        {
-            "key": 16,
-            "value": "Viana do Castelo"
-        },
-        {
-            "key": 17,
-            "value": "Vila Real"
-        },
-        {
-            "key": 18,
-            "value": "Viseu"
+            "id": 4,
+            "name": "Lisboa",
+            "shape": "circle",
+            "radius": 25,
+            "x1": 30,
+            "y1": 320,
+            "prefill": "#C8C8C8",
+            "fill": "#E05858"
         }
     ],
     "hospitals": [
@@ -105,24 +73,87 @@
     ],
     "locals": [
         {
-            "key": 1,
-            "value": "Entrada",
-            "icon": "../assets/entrada.png"
-        },
-        {
             "key": 2,
-            "value": "Sala de espera",
-            "icon": "../assets/salaDeEspera.png"
+            "value": "Entrada"
         },
         {
             "key": 3,
-            "value": "Gabinete 1",
-            "icon": "../assets/médico.png"
+            "value": "Sala de espera"
         },
         {
             "key": 4,
-            "value": "WC",
-            "icon": "../assets/wc.png"
+            "value": "Gabinete 1"
+        },
+        {
+            "key": 5,
+            "value": "WC"
+        },
+        {
+            "key": 6,
+            "value": "Receção"
+        },
+        {
+            "key": 7,
+            "value": "Gabinete 2"
+        },
+        {
+            "key": 8,
+            "value": "Bar"
+        },
+        {
+            "key": 9,
+            "value": "Sala de imagem médica"
+        }
+    ],
+    "routes": [
+        {
+            "from": 8,
+            "to": 5,
+            "start": "Bar",
+            "finish": "WC",
+            "icon": "../assets/B-WC.png"
+        },
+        {
+            "from": 3,
+            "to": 5,
+            "start": "Sala de espera",
+            "finish": "WC",
+            "icon": "../assets/SE-WC.png"
+        },
+        {
+            "from": 2,
+            "to": 6,
+            "start": "Entrada",
+            "finish": "Receção",
+            "icon": "../assets/E-R.png"
+        },
+        {
+            "from": 6,
+            "to": 4,
+            "start": "Receção",
+            "finish": "Gabinete 1",
+            "icon": "../assets/R-G1.png"
+        },
+        {
+            "from": 4,
+            "to": 9,
+            "start": "Gabinete 1",
+            "finish": "Sala de imagem médica",
+            "icon": "../assets/G1-SIM.png"
+        },
+        {
+            "from": 3,
+            "to": 8,
+            "start": "Sala de espera",
+            "finish": "Bar",
+            "icon": "../assets/SE-B.png"
+        },
+        {
+            "from": 3,
+            "to": 7,
+            "start": "Sala de espera",
+            "finish": "Gabinete 2",
+            "icon": "../assets/SE-G2.png"
         }
     ]
 }
