@@ -25,7 +25,7 @@
             "name": "Coimbra",
             "shape": "circle",
             "radius": 25,
-            "x1": 80,
+            "x1": 100,
             "y1": 200,
             "prefill": "#C8C8C8",
             "fill": "#E05858"
@@ -35,10 +35,28 @@
             "name": "Lisboa",
             "shape": "circle",
             "radius": 25,
-            "x1": 30,
-            "y1": 320,
+            "x1": 35,
+            "y1": 330,
             "prefill": "#C8C8C8",
             "fill": "#E05858"
+        }
+    ],
+    "Distritos": [
+        {
+            "key": 1,
+            "value": "Braga"
+        },
+        {
+            "key": 2,
+            "value": "Porto"
+        },
+        {
+            "key": 3,
+            "value": "Coimbra"
+        },
+        {
+            "key": 4,
+            "value": "Lisboa"
         }
     ],
     "hospitals": [
@@ -111,49 +129,56 @@
             "to": 5,
             "start": "Bar",
             "finish": "WC",
-            "icon": "../assets/B-WC.png"
+            "image": "https://z-m-scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/319064773_1097057611161152_2693209048040709851_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeHYFzj1_w_g34oSWebz8buUCKGl0CJOYgwIoaXQIk5iDHGZIUrVOuz5FoOqJvda95vvJKd4HlwE8sMToHy6yERF&_nc_ohc=p9V29op_M-8AX8V1vQj&_nc_ad=z-m&_nc_cid=1272&_nc_ht=z-m-scontent-lis1-1.xx&oh=00_AfCMarwKXJw6cBWvUW2DzqfaJBObnQLrULy8FDVDwf8GxA&oe=639E964A"
         },
         {
             "from": 3,
             "to": 5,
             "start": "Sala de espera",
             "finish": "WC",
-            "icon": "../assets/SE-WC.png"
+            "image": "https://z-m-scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/318849688_519771053514812_6495178707873045304_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeGdt5Bg1nbpS3IaTsjKuY_SmmIgVucbRCaaYiBW5xtEJrw4efCmHZb45sVMsly-Af-qLYOvdfZn4fUYXP0gbWpz&_nc_ohc=Hd0x37uLPpAAX_zbihn&_nc_ad=z-m&_nc_cid=1272&_nc_ht=z-m-scontent-lis1-1.xx&oh=00_AfAaBY5xn0usXWiCwy7l2YWEdsWkhc25torfzeUoCuDCYA&oe=639E0B17"
         },
         {
             "from": 2,
             "to": 6,
             "start": "Entrada",
             "finish": "Receção",
-            "icon": "../assets/E-R.png"
+            "image": "https://z-m-scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/319895976_861450225180528_8047187845189816058_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeGEh8k14sCsCXIMs0istCrEtLF0di9sL8S0sXR2L2wvxARucMtzGH0Tq-_dw3keDqBrIM-KweYWky6kpjOsZkxX&_nc_ohc=NVJfD35QjHEAX-jjbmU&_nc_ad=z-m&_nc_cid=1272&_nc_ht=z-m-scontent-lis1-1.xx&oh=00_AfBCLs8agm9Yl7nQEvOqmLzRNyKeYQhlpu_TA4IC8ppi1g&oe=639F9790"
         },
         {
             "from": 6,
             "to": 4,
             "start": "Receção",
             "finish": "Gabinete 1",
-            "icon": "../assets/R-G1.png"
+            "icon": "https://z-m-scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/318741197_8742386675834424_2723573036010958410_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeFCqVHNMH39LURQ5aq4w5cVgJGqAV5GK_mAkaoBXkYr-a9klHyiEOdrBJSe4ATN6PeZk_vtyfLgyYpGs-Zb3CgI&_nc_ohc=hycyHFwdDqoAX-klwVq&_nc_ad=z-m&_nc_cid=1272&_nc_ht=z-m-scontent-lis1-1.xx&oh=00_AfDogPwAl2upkauJDkTznc7GYACxxtnc8CPKX9eQ6GmlmQ&oe=639F0734"
         },
         {
             "from": 4,
             "to": 9,
             "start": "Gabinete 1",
             "finish": "Sala de imagem médica",
-            "icon": "../assets/G1-SIM.png"
+            "image": "https://z-m-scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/320194055_669980431449760_5890254347377302782_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeGsM5mTcsex25HR2NJBB4-TU1SxGmFypeJTVLEaYXKl4jtcKIU-fvYNsL5fe0pdG-F0JDvrdba6ZzhH7xCYsFx2&_nc_ohc=Y8JDInuZ7k0AX_Ovbw0&_nc_ad=z-m&_nc_cid=1272&_nc_ht=z-m-scontent-lis1-1.xx&oh=00_AfDc1G3s2vtPcNj5dOj-GABpzAhEZopbaU74xtyeH0XL2g&oe=639E5388"
         },
         {
             "from": 3,
             "to": 8,
             "start": "Sala de espera",
             "finish": "Bar",
-            "icon": "../assets/SE-B.png"
+            "image": "https://z-m-scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/319685062_1589992988148827_5647441864945637499_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeHnVipNGNUHT4G5lbBD0PoOEKzPFkirOi0QrM8WSKs6LWJ3rYPDrJX-5tJDL1saj5mgcGQkcPhyOCT_meA8qtRp&_nc_ohc=bXaXfjzcVa0AX-G00UO&tn=rgKdB-YTLWaXx_XX&_nc_ad=z-m&_nc_cid=1272&_nc_ht=z-m-scontent-lis1-1.xx&oh=00_AfAeD0hxl5rcA6Ard-nsTFoIK_8Hc_O1qozIZmhiPWOa5Q&oe=639E1075"
         },
         {
             "from": 3,
             "to": 7,
             "start": "Sala de espera",
             "finish": "Gabinete 2",
-            "icon": "../assets/SE-G2.png"
+            "image": "https://z-m-scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/318638213_1351069885661398_4869005890933063373_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeFaaVdXRmMKiQ_ibIno4ji3sIY4hdeVeuCwhjiF15V64O_pY8BdW-ON-wXhtnH2o93dCsy_Pwea6UT3Pr2hgW21&_nc_ohc=mKQHz3Q_9NMAX_OKJOw&tn=rgKdB-YTLWaXx_XX&_nc_ad=z-m&_nc_cid=1272&_nc_ht=z-m-scontent-lis1-1.xx&oh=00_AfBpFYNXO8WFxUPWMexXI27XZPeCfL_0YUwA33TFD2mpXA&oe=639E4323"
+        },
+        {
+            "from": 3,
+            "to": 4,
+            "start": "Sala de espera",
+            "finish": "Gabinete 1",
+            "image": "https://z-m-scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/319993711_1179473519318932_2713947387803539358_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeG0_s3rkFml2z-Fnj_2mpvu99ADscpn6fL30AOxymfp8geOitqdNmAzb1X26IalBJ4U4lhiVZp_5demQWA-IhKc&_nc_ohc=-wDahp_l1ckAX-jorbE&_nc_ad=z-m&_nc_cid=1272&_nc_ht=z-m-scontent-lis1-1.xx&oh=00_AfDQgNPoEZzZmP_Nx2xjqMd3tTPrlvJ2AkHTRjukvUO4qw&oe=639F0664"
         }
     ]
 }

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const paginaInicial = ({ navigation }) => {
+const PaginaInicial = ({ navigation }) => {
   return (
     <View style={styles.page}>
       <View style={styles.topContainer}>
@@ -42,10 +42,6 @@ const paginaInicial = ({ navigation }) => {
         </Text>
       </View>
       <View style={styles.mediumContainer}>
-        <Image
-          style={styles.logo}
-          source={require('../assets/Wips4.png')}>
-        </Image>
       </View>
       <View>
         <SafeAreaView>
@@ -62,4 +58,4 @@ const paginaInicial = ({ navigation }) => {
   );
 }
 
-export default paginaInicial;
+export default PaginaInicial;

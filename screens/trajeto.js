@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { getAllLocals, getRoutes } from './baseAPI';
-import { View, Text, Image, StyleSheet, Button, TextInput } from 'react-native';
+import { View, StyleSheet, Button, TextInput } from 'react-native';
 import SelectList from 'react-native-dropdown-select-list'
 
 
@@ -62,14 +61,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5
   },
-
+  trajeto: {
+    width: 300,
+    height: 200
+  }
 });
 
-const trajeto = ({ navigation }) => {
+const Trajeto = ({ navigation }) => {
   const [number, onChangeNumber] = React.useState(null);
   const [selectedStart, setSelectedStart] = React.useState("");
   const [selectedFinish, setSelectedFinish] = React.useState("");
   const [locals, setLocals] = React.useState([]);
+  const [show, setShow] = React.useState(false);
+  const [image, setImage] = React.useState("");
+
   useEffect(() => {
     getAllLocals().then(response => setLocals(response))
   }, [])
@@ -77,6 +82,13 @@ const trajeto = ({ navigation }) => {
     console.log(selectedStart, selectedFinish)
   }, [selectedStart, selectedFinish])
 
+  const getTrajeto = () => {
+    getRoutes({ start: selectedStart, finish: selectedFinish }).then(response => { setImage(response.image), setShow(true), document.getElementById("image").src = response.image });
+  }
+
+  useEffect(() => {
+    console.log(image)
+  }, [image])
 
   return (
     <View style={styles.page}>
@@ -103,11 +115,18 @@ const trajeto = ({ navigation }) => {
         </View>
         <View style={{ paddingHorizontal: 150, paddingTop: 20, borderRadius: 4, alignItems: "left" }}>
           <Button
-            onPress={() => getRoutes({ start: selectedStart, finish: selectedFinish })}
+            onPress={getTrajeto}
             title="OK"
             color="#001D6E"
           />
         </View>
+        {show ? /* <Image
+          style={styles.trajeto}
+          source={require(image)}
+        /> */
+          <img id='image'>
+          </img>
+          : null}
       </View>
       <View style={styles.bottomContainer}>
         <View style={{ paddingHorizontal: 110, borderRadius: 4, alignItems: "left" }}>
@@ -123,4 +142,4 @@ const trajeto = ({ navigation }) => {
   );
 }
 
-export default trajeto;
+export default Trajeto;

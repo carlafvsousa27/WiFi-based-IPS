@@ -1,112 +1,142 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { getAllHospitals } from './baseAPI';
 import { getAllDistricts } from './baseAPI';
-import { View, Text, Image, StyleSheet, SafeAreaView, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
 import ImageMapper from 'react-native-image-mapper';
-import SelectList from 'react-native-dropdown-select-list'
+
 
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: '#DFF6FF',
-    height: 667,
+    height: 844,
+    backgroundColor: "#FFFFFF",
+    flex: 1
   },
   topContainer: {
-    paddingTop: 110,
-    paddingBottom: 30,
-    backgroundColor: '#DFF6FF',
-    alignItems: 'center'
-  },
-  mediumContainer: {
-    paddingTop: 70,
-    backgroundColor: '#DFF6FF',
-    alignItems: 'center'
+    paddingBottom: 10,
+    top: 50,
+    left: 7
   },
   bottomContainer: {
-    paddingTop: 20,
-    backgroundColor: '#DFF6FF',
+    paddingBottom: 25,
     alignItems: 'center'
-  },
-  logo: {
-    width: 120,
-    height: 120
   },
   baseText: {
     fontSize: 26,
     color: '#001D6E'
   },
   titleText: {
+    top: 30,
+    left: 30,
+    fontSize: 32,
+    xHeight: 48,
+    color: '#001253',
+    paddingLeft: 20
+  },
+  secondTitleText: {
+    top: 114,
+    left: 30,
     fontSize: 30,
-    fontWeight: "bold",
-    color: '#001D6E'
+    fontWeight: 'bold',
+    xHeight: 48,
+    color: '#332FD0',
+    paddingLeft: 20
+  },
+  Text: {
+    fontSize: 18,
+    alignItems: 'center',
+    color: "#001253"
+  },
+  menu: {
+    top: 50,
+    left: 260,
+    width: 108,
+    height: 48,
+    flexDirection: "row",
+  },
+  icons: {
+    paddingRight: 12,
+    alignItems: "center"
   }
 });
 
-const selecaoHospital = ({ navigation }) => {
+const SelecaoHospital = ({ navigation }) => {
   const [selected, setSelected] = React.useState("");
   const [hospitals, setHospitals] = React.useState([]);
   useEffect(() => {
     getAllHospitals().then(response => setHospitals(response))
   }, [])
-  useEffect(() => {
-    console.log(hospitals)
-  }, [hospitals])
+
 
   const [districts, setDistricts] = React.useState([]);
   useEffect(() => {
     getAllDistricts().then(response => setDistricts(response))
   }, [])
-  useEffect(() => {
-    console.log(districts)
-  }, [districts])
+
 
   const [selectedArea, setSelectedArea] = useState('');
   const [selectedAreaId, setSelectedAreaId] = useState(null);
 
-  useEffect(() => {
-    console.log(selectedArea);
-    console.log(screen.width);
-  }, [selectedArea]);
-
-
 
   return (
     <View style={styles.page}>
+      <View style={styles.menu}>
+        <TouchableOpacity style={styles.icons}>
+          <Image
+            source={require('../assets/locationBlue.png')}
+            style={{ padding: 5, width: 24, height: 24 }}
+          />
+          <Text style={{ color: "#001253", borderBottomWidth: 3, borderColor: "#001253" }}>
+            Distrito
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.icons} onPress={() => { navigation.navigate('tabBarHospitais'), console.log("ola") }}>
+          <Image
+            source={require('../assets/menuGrey.png')}
+            style={{ padding: 5, width: 24, height: 24 }}
+          />
+          <Text style={{ color: "#B2B2B2" }}>
+            Hospitais
+          </Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.topContainer}>
-        <Text style={styles.baseText}>
-          Selecione o hospital
+        <Text style={styles.titleText}>
+          Selecione o
+        </Text>
+        <Text style={styles.secondTitleText}>
+          Distrito
         </Text>
       </View>
       <ImageMapper
-        imgHeight={450}
-        imgWidth={200}
+        imgHeight={440}
+        imgWidth={240}
         imgSource={{
-          uri: 'https://static.vecteezy.com/ti/vetor-gratis/p1/4720190-portugal-map-on-white-background-gratis-vetor.jpg',
+          uri: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Mapa_de_Portugal_-_Distritos_plain.png',
         }}
         imgMap={districts}
         onPress={(item, idx, event) => {
           setSelectedArea(item.name), setSelectedAreaId(item.id);
         }}
-        containerStyle={{ top: 10, alignItems: 'center' }}
+        containerStyle={{ alignItems: 'center', paddingTop: 10, paddingBottom: 10 }}
         selectedAreaId={selectedAreaId}
       />
-      <View style={{ paddingHorizontal: 30, paddingTop: 20 }}>
-        <SelectList
-          setSelected={setSelected} data={hospitals}
-          defaultOption={{ key: '1', value: 'Hospital' }}
-          boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7" }}
-          inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
+      <View style={styles.bottomContainer}>
+        <Text style={styles.Text}>
+          Selecione no mapa o distrito do hospital
+        </Text>
+        <Text style={styles.Text}>
+          que irá visitar
+        </Text>
+        <Button
+          onPress={() => navigation.navigate('trajeto')}
+          title="Continuar"
+          color="#001D6E"
         />
       </View>
-      <Button
-        onPress={() => navigation.navigate('trajeto')}
-        title="Continuar"
-        color="#001D6E"
-      />
     </View>
   );
 }
 
 
-export default selecaoHospital;
+export default SelecaoHospital;

@@ -30,6 +30,15 @@ export const getAllDistricts = async () => {
         console.log('error: ' + error);
     }
 }
+export const getAllDistritos = async () => {
+    try {
+        const response = await axios.get("http://localhost:3000/Distritos");
+        console.log(JSON.stringify(response.data));
+        return response.data;
+    } catch (error) {
+        console.log('error: ' + error);
+    }
+}
 
 
 export const getRoutes = async (params) => {
@@ -38,7 +47,6 @@ export const getRoutes = async (params) => {
         console.log(params);
         console.log(JSON.stringify(response.data));
         const result = response.data.find(item => { return (item.from == params.start || item.to == params.start) && (item.from == params.finish || item.to == params.finish) });
-        console.log(result.icon);
         return result;
     } catch (error) {
         console.log('error: ' + error);
