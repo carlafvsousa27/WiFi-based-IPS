@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getAllDistritos } from './baseAPI'
+import { getAllHospitals } from './baseAPI'
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import SelectList from 'react-native-dropdown-select-list'
 
@@ -9,11 +9,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFFFFF"
     },
     menu: {
-        top: 30,
-        left: 260,
-        width: 108,
-        height: 48,
-        flexDirection: "row",
+        paddingTop: 55,
+        paddingLeft: 250,
+        width: 390,
+        height: 100,
+        flexDirection: "row"
     },
     icons: {
         paddingRight: 12,
@@ -24,21 +24,31 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     titleText: {
-        paddingLeft: 30,
+        paddingTop: 30,
         fontSize: 32,
         xHeight: 48,
-        color: '#001253',
-        paddingTop: 30
+        color: '#001253'
+    },
+    topContainer: {
+        paddingBottom: 10,
+        paddingTop: 7,
+        paddingLeft: 24
+    },
+    secondTitleText: {
+        fontSize: 27,
+        fontWeight: 'bold',
+        xHeight: 48,
+        color: '#332FD0'
     }
 });
 
 
 
 const TabBarHospitais = ({ navigation }) => {
-    const [Distritos, setDistritos] = React.useState([]);
+    const [hospitals, setHospitals] = React.useState([]);
 
     useEffect(() => {
-        getAllDistritos().then(response => setDistritos(response))
+        getAllHospitals().then(response => setHospitals(response))
     }, [])
 
 
@@ -64,18 +74,21 @@ const TabBarHospitais = ({ navigation }) => {
                     </Text>
                 </TouchableOpacity>
             </View>
-            <View>
+            <View style={styles.topContainer}>
                 <Text style={styles.titleText}>
-                    Selecione o Distrito
+                    Selecione o
+                </Text>
+                <Text style={styles.secondTitleText}>
+                    Hospital
                 </Text>
             </View>
             <View style={styles.dropDown}>
                 <SelectList
-                    setSelected={setDistritos} data={Distritos}
+                    setSelected={setHospitals} data={hospitals}
                     boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7", height: 35, width: 300, alignItems: 'left', paddingHorizontal: 10, paddingVertical: 5, opacity: 1 }}
                     inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
                     save="value"
-                    placeholder="Selecione o distrito"
+                    placeholder="Selecione o hospital"
                 />
             </View>
         </View>

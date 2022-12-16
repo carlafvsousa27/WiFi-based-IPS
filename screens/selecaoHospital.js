@@ -9,13 +9,12 @@ import ImageMapper from 'react-native-image-mapper';
 const styles = StyleSheet.create({
   page: {
     height: 844,
-    backgroundColor: "#FFFFFF",
-    flex: 1
+    backgroundColor: "#FFFFFF"
   },
   topContainer: {
     paddingBottom: 10,
-    top: 50,
-    left: 7
+    paddingTop: 7,
+    paddingLeft: 24
   },
   bottomContainer: {
     paddingBottom: 25,
@@ -26,33 +25,31 @@ const styles = StyleSheet.create({
     color: '#001D6E'
   },
   titleText: {
-    top: 30,
-    left: 30,
+    paddingTop: 30,
     fontSize: 32,
     xHeight: 48,
-    color: '#001253',
-    paddingLeft: 20
+    color: '#001253'
   },
   secondTitleText: {
-    top: 114,
-    left: 30,
-    fontSize: 30,
+    fontSize: 27,
     fontWeight: 'bold',
     xHeight: 48,
-    color: '#332FD0',
-    paddingLeft: 20
+    color: '#332FD0'
   },
   Text: {
-    fontSize: 18,
+    fontSize: 16,
+    paddigLeft: 20,
     alignItems: 'center',
-    color: "#001253"
+    color: "#001253",
+    paddingBottom: 10,
+    xHeight: 5,
   },
   menu: {
-    top: 50,
-    left: 260,
-    width: 108,
-    height: 48,
-    flexDirection: "row",
+    paddingTop: 55,
+    paddingLeft: 250,
+    width: 390,
+    height: 100,
+    flexDirection: "row"
   },
   icons: {
     paddingRight: 12,
@@ -90,7 +87,7 @@ const SelecaoHospital = ({ navigation }) => {
             Distrito
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.icons} onPress={() => { navigation.navigate('tabBarHospitais'), console.log("ola") }}>
+        <TouchableOpacity style={styles.icons} onPress={() => navigation.navigate('tabBarHospitais')}>
           <Image
             source={require('../assets/menuGrey.png')}
             style={{ padding: 5, width: 24, height: 24 }}
@@ -118,15 +115,15 @@ const SelecaoHospital = ({ navigation }) => {
         onPress={(item, idx, event) => {
           setSelectedArea(item.name), setSelectedAreaId(item.id);
         }}
-        containerStyle={{ alignItems: 'center', paddingTop: 10, paddingBottom: 10 }}
+        containerStyle={{ alignItems: 'center', paddingTop: 15, paddingBottom: 10 }}
         selectedAreaId={selectedAreaId}
       />
       <View style={styles.bottomContainer}>
         <Text style={styles.Text}>
-          Selecione no mapa o distrito do hospital
+          Selecione no mapa o distrito do
         </Text>
         <Text style={styles.Text}>
-          que irá visitar
+          hospital que irá visitar
         </Text>
         <Button
           onPress={() => navigation.navigate('trajeto')}
