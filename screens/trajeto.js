@@ -7,24 +7,21 @@ import SelectList from 'react-native-dropdown-select-list'
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: '#DFF6FF',
+    backgroundColor: '#FFFFFF',
     height: 667,
   },
   topContainer: {
     paddingTop: 50,
     paddingBottom: 5,
-    backgroundColor: '#DFF6FF',
     alignItems: 'center'
   },
   mediumContainer: {
     height: 500,
     paddingTop: 10,
-    backgroundColor: '#DFF6FF',
     alignItems: 'center'
   },
   bottomContainer: {
     paddingTop: 10,
-    backgroundColor: '#DFF6FF',
   },
   logo: {
     width: 200,
