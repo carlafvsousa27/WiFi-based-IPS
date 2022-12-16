@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { getAllHospitals } from './baseAPI'
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Button } from 'react-native';
 import SelectList from 'react-native-dropdown-select-list'
 
 const styles = StyleSheet.create({
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         fontSize: 27,
         fontWeight: 'bold',
         xHeight: 48,
-        color: '#332FD0'
+        color: '#4B56D2'
     }
 });
 
@@ -85,10 +85,17 @@ const TabBarHospitais = ({ navigation }) => {
             <View style={styles.dropDown}>
                 <SelectList
                     setSelected={setHospitals} data={hospitals}
-                    boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7", height: 35, width: 300, alignItems: 'left', paddingHorizontal: 10, paddingVertical: 5, opacity: 1 }}
-                    inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
+                    boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
+                    inputStyles={{ color: "#001D6E", fontWeight: "bold", backgroundColor: "#FFFFFF" }}
                     save="value"
                     placeholder="Selecione o hospital"
+                    dropdownStyles={{ backgroundColor: "#FFFFFF" }}
+                />
+
+                <Button
+                    onPress={() => navigation.navigate('trajeto')}
+                    title="Continuar"
+                    color="#ED6F6F"
                 />
             </View>
         </View>

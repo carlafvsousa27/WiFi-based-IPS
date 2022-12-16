@@ -7,8 +7,9 @@ import SelectList from 'react-native-dropdown-select-list'
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: '#FFFFFF',
-    height: 667,
+    backgroundColor: '#4B56D2',
+    height: 844,
+    width: 391
   },
   topContainer: {
     paddingTop: 50,
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   bottomContainer: {
-    paddingTop: 10,
+    paddingTop: 60,
   },
   logo: {
     width: 200,
@@ -93,10 +94,11 @@ const Trajeto = ({ navigation }) => {
         <View>
           <SelectList
             setSelected={setSelectedStart} data={locals}
-            boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7", height: 35, width: 300, alignItems: 'left', paddingHorizontal: 10, paddingVertical: 5 }}
+            boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
             inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
             save="value"
             placeholder="Onde se encontra?"
+            dropdownStyles={{ backgroundColor: "#FFFFFF" }}
           />
         </View>
       </View>
@@ -104,33 +106,33 @@ const Trajeto = ({ navigation }) => {
         <View>
           <SelectList
             setSelected={setSelectedFinish} data={locals}
-            boxStyles={{ borderRadius: 6, backgroundColor: "#6EC2F7", height: 35, width: 300, alignItems: 'left', paddingHorizontal: 10, paddingVertical: 5 }}
+            boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
             inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
             save="value"
             placeholder="Destino?"
+            dropdownStyles={{ backgroundColor: "#FFFFFF" }}
           />
         </View>
         <View style={{ paddingHorizontal: 150, paddingTop: 20, borderRadius: 4, alignItems: "left" }}>
           <Button
             onPress={getTrajeto}
             title="OK"
-            color="#001D6E"
+            color="#ED6F6F"
           />
         </View>
-        {show ? /* <Image
-          style={styles.trajeto}
-          source={require(image)}
-        /> */
-          <img id='image'>
-          </img>
-          : null}
+        <View style={{ marginTop: 20, width: 300, height: 460, resizeMode: 'stretch' }}>
+          {show ?
+            <img id='image'>
+            </img>
+            : null}
+        </View>
       </View>
       <View style={styles.bottomContainer}>
         <View style={{ paddingHorizontal: 110, borderRadius: 4, alignItems: "left" }}>
           <Button
             onPress={() => navigation.goBack()}
             title="Go back"
-            color="#001D6E"
+            color="#ED6F6F"
           />
         </View>
       </View>

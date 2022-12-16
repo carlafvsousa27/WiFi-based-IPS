@@ -5,9 +5,9 @@
             "name": "Braga",
             "shape": "circle",
             "radius": 25,
-            "x1": 105,
-            "y1": 55,
-            "prefill": "#C8C8C8",
+            "x1": 80,
+            "y1": 39,
+            "prefill": "#FFFFFF",
             "fill": "#E05858"
         },
         {
@@ -15,9 +15,9 @@
             "name": "Porto",
             "shape": "circle",
             "radius": 25,
-            "x1": 100,
-            "y1": 90,
-            "prefill": "#C8C8C8",
+            "x1": 79,
+            "y1": 68,
+            "prefill": "#FFFFFF",
             "fill": "#E05858"
         },
         {
@@ -25,9 +25,9 @@
             "name": "Coimbra",
             "shape": "circle",
             "radius": 25,
-            "x1": 100,
-            "y1": 200,
-            "prefill": "#C8C8C8",
+            "x1": 77,
+            "y1": 154,
+            "prefill": "#FFFFFF",
             "fill": "#E05858"
         },
         {
@@ -35,9 +35,9 @@
             "name": "Lisboa",
             "shape": "circle",
             "radius": 25,
-            "x1": 35,
-            "y1": 330,
-            "prefill": "#C8C8C8",
+            "x1": 22,
+            "y1": 253,
+            "prefill": "#FFFFFF",
             "fill": "#E05858"
         }
     ],
@@ -129,7 +129,7 @@
             "to": 5,
             "start": "Bar",
             "finish": "WC",
-            "image": "https://z-m-scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/319064773_1097057611161152_2693209048040709851_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeHYFzj1_w_g34oSWebz8buUCKGl0CJOYgwIoaXQIk5iDHGZIUrVOuz5FoOqJvda95vvJKd4HlwE8sMToHy6yERF&_nc_ohc=p9V29op_M-8AX8V1vQj&_nc_ad=z-m&_nc_cid=1272&_nc_ht=z-m-scontent-lis1-1.xx&oh=00_AfCMarwKXJw6cBWvUW2DzqfaJBObnQLrULy8FDVDwf8GxA&oe=639E964A"
+            "image": "https://scontent.fopo5-2.fna.fbcdn.net/v/t39.30808-6/319064773_1097057611161152_2693209048040709851_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0debeb&_nc_eui2=AeHYFzj1_w_g34oSWebz8buUCKGl0CJOYgwIoaXQIk5iDHGZIUrVOuz5FoOqJvda95vvJKd4HlwE8sMToHy6yERF&_nc_ohc=p9V29op_M-8AX_zgzx1&_nc_ht=scontent.fopo5-2.fna&oh=00_AfDPJEt0vS0M3a0nSY7_qh9hY1KVkxaaFlxBzrLa-PgxGQ&oe=63A0908A"
         },
         {
             "from": 3,

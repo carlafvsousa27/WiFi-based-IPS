@@ -3,6 +3,7 @@ import { getAllHospitals } from './baseAPI';
 import { getAllDistricts } from './baseAPI';
 import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
 import ImageMapper from 'react-native-image-mapper';
+import SelectList from 'react-native-dropdown-select-list';
 
 
 
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 27,
     fontWeight: 'bold',
     xHeight: 48,
-    color: '#332FD0'
+    color: '#4B56D2'
   },
   Text: {
     fontSize: 16,
@@ -69,7 +70,6 @@ const SelecaoHospital = ({ navigation }) => {
   useEffect(() => {
     getAllDistricts().then(response => setDistricts(response))
   }, [])
-
 
   const [selectedArea, setSelectedArea] = useState('');
   const [selectedAreaId, setSelectedAreaId] = useState(null);
@@ -125,11 +125,24 @@ const SelecaoHospital = ({ navigation }) => {
         <Text style={styles.Text}>
           hospital que irá visitar
         </Text>
-        <Button
-          onPress={() => navigation.navigate('trajeto')}
-          title="Continuar"
-          color="#001D6E"
-        />
+
+        {selectedArea ?
+          <View style={{
+            backgroundColor: "#ED6F6F", width: 340, height: 125, position: "absolute", bottom: 23, borderRadius: 8
+          }}>
+            <Text style={{ color: "#FFFFFF", fontSize: 20, marginLeft: 15, fontWeight: 'bold', marginTop: 15 }}>
+              {selectedArea}
+            </Text>
+            <SelectList
+              setSelected={setHospitals} data={hospitals}
+              boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
+              inputStyles={{ color: "#001D6E", fontWeight: "bold", backgroundColor: "#FFFFFF" }}
+              save="value"
+              placeholder="Selecione o hospital"
+              dropdownStyles={{ backgroundColor: "#FFFFFF" }}
+            />
+          </View>
+          : null}
       </View>
     </View>
   );
