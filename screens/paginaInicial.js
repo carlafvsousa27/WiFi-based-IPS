@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, SafeAreaView, Button, TouchableNativeFeedback } from 'react-native';
-import { ImageBackground, TouchableOpacity } from 'react-native-web';
+import { View, Text, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-web';
 
 
 const styles = StyleSheet.create({

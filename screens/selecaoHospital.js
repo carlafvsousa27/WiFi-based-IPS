@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAllHospitals } from './baseAPI';
 import { getAllDistricts } from './baseAPI';
-import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import ImageMapper from 'react-native-image-mapper';
 import SelectList from 'react-native-dropdown-select-list';
 
@@ -128,7 +128,7 @@ const SelecaoHospital = ({ navigation }) => {
 
         {selectedArea ?
           <View style={{
-            backgroundColor: "#ED6F6F", width: 340, height: 125, position: "absolute", bottom: 23, borderRadius: 8
+            backgroundColor: "#ED6F6F", width: 340, height: 140, position: "absolute", bottom: 23, borderRadius: 8
           }}>
             <Text style={{ color: "#FFFFFF", fontSize: 20, marginLeft: 15, fontWeight: 'bold', marginTop: 15 }}>
               {selectedArea}
@@ -141,6 +141,14 @@ const SelecaoHospital = ({ navigation }) => {
               placeholder="Selecione o hospital"
               dropdownStyles={{ backgroundColor: "#FFFFFF" }}
             />
+            <View style={{ alignItems: 'center' }}>
+              <TouchableOpacity onPress={() => navigation.navigate('trajeto')}>
+                <Image
+                  source={require('../assets/continuar.png')}
+                  style={{ width: 45, height: 45, marginBottom: 5 }}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
           : null}
       </View>

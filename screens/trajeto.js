@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { getAllLocals, getRoutes } from './baseAPI';
-import { View, StyleSheet, Button, TextInput } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import SelectList from 'react-native-dropdown-select-list'
-
 
 
 const styles = StyleSheet.create({
@@ -22,7 +21,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   bottomContainer: {
-    paddingTop: 60,
+    marginTop: 95,
   },
   logo: {
     width: 200,
@@ -120,9 +119,10 @@ const Trajeto = ({ navigation }) => {
             color="#ED6F6F"
           />
         </View>
-        <View style={{ marginTop: 20, width: 300, height: 460, resizeMode: 'stretch' }}>
+        <View style={{ marginTop: 20, width: 300, height: 440 }}>
           {show ?
-            <img id='image'>
+            <img id='image'
+              style={{ width: "100%", height: "100%", resizeMode: "cover", size: { width: 300, height: 440 } }}>
             </img>
             : null}
         </View>
