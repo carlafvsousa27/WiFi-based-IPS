@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getAllLocals = async () => {
     try {
-        const response = await axios.get("http://localhost:3000/locals");
+        const response = await axios.get("https://atufg44mm2.execute-api.eu-west-3.amazonaws.com/testes/locais");
         console.log(JSON.stringify(response.data));
         return response.data;
     } catch (error) {
@@ -12,7 +12,7 @@ export const getAllLocals = async () => {
 
 export const getAllHospitals = async () => {
     try {
-        const response = await axios.get("http://localhost:3000/hospitals");
+        const response = await axios.get("https://atufg44mm2.execute-api.eu-west-3.amazonaws.com/testes/hospitaisporto");
         console.log(JSON.stringify(response.data));
         return response.data;
     } catch (error) {
@@ -23,7 +23,7 @@ export const getAllHospitals = async () => {
 
 export const getAllDistricts = async () => {
     try {
-        const response = await axios.get("http://localhost:3000/districts");
+        const response = await axios.get("https://atufg44mm2.execute-api.eu-west-3.amazonaws.com/testes/distritos");
         console.log(JSON.stringify(response.data));
         return response.data;
     } catch (error) {
@@ -32,7 +32,7 @@ export const getAllDistricts = async () => {
 }
 export const getAllDistritos = async () => {
     try {
-        const response = await axios.get("http://localhost:3000/Distritos");
+        const response = await axios.get("https://atufg44mm2.execute-api.eu-west-3.amazonaws.com/testes/distritos");
         console.log(JSON.stringify(response.data));
         return response.data;
     } catch (error) {
@@ -43,7 +43,7 @@ export const getAllDistritos = async () => {
 
 export const getRoutes = async (params) => {
     try {
-        const response = await axios.get("http://localhost:3000/routes");
+        const response = await axios.get("https://atufg44mm2.execute-api.eu-west-3.amazonaws.com/testes/trajeto");
         console.log(params);
         console.log(JSON.stringify(response.data));
         const result = response.data.find(item => { return (item.from == params.start || item.to == params.start) && (item.from == params.finish || item.to == params.finish) });
