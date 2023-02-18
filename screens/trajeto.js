@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { getAllLocals, getRoutes } from './baseAPI';
-import { View, StyleSheet, Button } from 'react-native';
-import SelectList from 'react-native-dropdown-select-list'
+import { View, StyleSheet, TouchableOpacity, Image, Text, useWindowDimensions, ScrollView } from 'react-native';
+import SelectList from 'react-native-dropdown-select-list';
 
 
 const styles = StyleSheet.create({
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   bottomContainer: {
-    marginTop: 95,
+    marginTop: 15,
   },
   logo: {
     width: 200,
@@ -64,14 +64,15 @@ const styles = StyleSheet.create({
   }
 });
 
+
+
 const Trajeto = ({ navigation }) => {
-  const [number, onChangeNumber] = React.useState(null);
   const [selectedStart, setSelectedStart] = React.useState("");
   const [selectedFinish, setSelectedFinish] = React.useState("");
   const [locals, setLocals] = React.useState([]);
   const [show, setShow] = React.useState(false);
   const [image, setImage] = React.useState("");
-
+  const { width, height } = useWindowDimensions();
   useEffect(() => {
     getAllLocals().then(response => setLocals(response))
   }, [])
@@ -79,21 +80,19 @@ const Trajeto = ({ navigation }) => {
     console.log(selectedStart, selectedFinish)
   }, [selectedStart, selectedFinish])
 
+  useEffect(() => { console.log(image) }, [image])
+
   const getTrajeto = () => {
-    getRoutes({ start: selectedStart, finish: selectedFinish }).then(response => { setImage(response.image), setShow(true), document.getElementById("image").src = response.image });
+    getRoutes({ start: selectedStart, finish: selectedFinish }).then(response => { setImage(response.image), setShow(true) /*, document.getElementById("image").src = response.image */ });
   }
 
-  useEffect(() => {
-    console.log(image)
-  }, [image])
-
   return (
-    <View style={styles.page}>
+    <ScrollView style={styles.page}>
       <View style={styles.topContainer}>
         <View>
           <SelectList
             setSelected={setSelectedStart} data={locals}
-            boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
+            boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 320, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
             inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
             save="value"
             placeholder="Onde se encontra?"
@@ -105,39 +104,44 @@ const Trajeto = ({ navigation }) => {
         <View>
           <SelectList
             setSelected={setSelectedFinish} data={locals}
-            boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
+            boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 320, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
             inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
             save="value"
             placeholder="Destino?"
             dropdownStyles={{ backgroundColor: "#FFFFFF" }}
           />
         </View>
-        <View style={{ paddingHorizontal: 150, paddingTop: 20, borderRadius: 4, alignItems: "left" }}>
-          <Button
+        <View>
+          <TouchableOpacity
             onPress={getTrajeto}
-            title="OK"
-            color="#ED6F6F"
-          />
+            style={{ paddingHorizontal: 30, paddingVertical: 10, borderRadius: 8, backgroundColor: '#ED6F6F', marginTop: 7 }}
+          >
+            <Text style={{ color: "#FFFFFF", fontWeight: "bold" }}>
+              OK
+            </Text>
+          </TouchableOpacity>
         </View>
-        <View style={{ marginTop: 20, width: 300, height: 440 }}>
+        <View style={{ marginTop: 20 }}>
           {show ?
-            <img id='image'
-              style={{ width: "100%", height: "100%", resizeMode: "cover", size: { width: 300, height: 440 } }}>
-            </img>
+            <Image id='image' source={{ uri: image }}
+              style={{ width: 340, height: 520, overflow: "hidden" }}>
+            </Image>
             : null}
         </View>
-      </View>
-      <View style={styles.bottomContainer}>
-        <View style={{ paddingHorizontal: 110, borderRadius: 4, alignItems: "left" }}>
-          <Button
-            onPress={() => navigation.goBack()}
-            title="Go back"
-            color="#ED6F6F"
-          />
+        <View style={styles.bottomContainer}>
+          <View style={{ paddingHorizontal: 110, borderRadius: 4, alignItems: "left" }}>
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={{ paddingHorizontal: 30, paddingVertical: 10, borderRadius: 8, backgroundColor: '#ED6F6F' }}
+            >
+              <Text style={{ color: "#FFFFFF", fontWeight: "bold" }}>
+                Go back
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-
-    </View>
+    </ScrollView>
   );
 }
 

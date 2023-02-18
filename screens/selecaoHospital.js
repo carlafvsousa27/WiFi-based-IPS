@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     paddingLeft: 24
   },
   bottomContainer: {
-    paddingBottom: 25,
+    paddingBottom: 35,
     alignItems: 'center'
   },
   baseText: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     xHeight: 5,
   },
   menu: {
-    paddingTop: 55,
+    paddingTop: 65,
     paddingLeft: 250,
     width: 390,
     height: 100,

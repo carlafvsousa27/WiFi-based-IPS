@@ -49,6 +49,6 @@ export const getRoutes = async (params) => {
         const result = response.data.find(item => { return (item.from == params.start || item.to == params.start) && (item.from == params.finish || item.to == params.finish) });
         return result;
     } catch (error) {
-        console.log('error: ' + error);
+        return console.log('error: ' + error);
     }
 }
