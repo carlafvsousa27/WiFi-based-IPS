@@ -87,7 +87,7 @@ const Trajeto = ({ navigation }) => {
   }
 
   return (
-    <ScrollView style={styles.page}>
+    <View style={styles.page}>
       <View style={styles.topContainer}>
         <View>
           <SelectList
@@ -141,7 +141,7 @@ const Trajeto = ({ navigation }) => {
           </View>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 

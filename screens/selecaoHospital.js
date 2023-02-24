@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getAllHospitals } from './baseAPI';
 import { getAllDistricts } from './baseAPI';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
 import ImageMapper from 'react-native-image-mapper';
 import SelectList from 'react-native-dropdown-select-list';
 
-
+const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   page: {
@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
     paddigLeft: 20,
     alignItems: 'center',
     color: "#001253",
-    paddingBottom: 10,
-    xHeight: 5,
+    paddingBottom: 20,
+    xHeight: 5
   },
   menu: {
     paddingTop: 65,
@@ -105,53 +105,58 @@ const SelecaoHospital = ({ navigation }) => {
           Distrito
         </Text>
       </View>
-      <ImageMapper
-        imgHeight={440}
-        imgWidth={240}
-        imgSource={{
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Mapa_de_Portugal_-_Distritos_plain.png',
-        }}
-        imgMap={districts}
-        onPress={(item, idx, event) => {
-          setSelectedArea(item.name), setSelectedAreaId(item.id);
-        }}
-        containerStyle={{ alignItems: 'center', paddingTop: 15, paddingBottom: 10 }}
-        selectedAreaId={selectedAreaId}
-      />
-      <View style={styles.bottomContainer}>
-        <Text style={styles.Text}>
-          Selecione no mapa o distrito do
-        </Text>
-        <Text style={styles.Text}>
-          hospital que irá visitar
-        </Text>
-
-        {selectedArea ?
-          <View style={{
-            backgroundColor: "#ED6F6F", width: 340, height: 140, position: "absolute", bottom: 23, borderRadius: 8
-          }}>
-            <Text style={{ color: "#FFFFFF", fontSize: 20, marginLeft: 15, fontWeight: 'bold', marginTop: 15 }}>
-              {selectedArea}
-            </Text>
-            <SelectList
-              setSelected={setHospitals} data={hospitals}
-              boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
-              inputStyles={{ color: "#001D6E", fontWeight: "bold", backgroundColor: "#FFFFFF" }}
-              save="value"
-              placeholder="Selecione o hospital"
-              dropdownStyles={{ backgroundColor: "#FFFFFF" }}
-            />
-            <View style={{ alignItems: 'center' }}>
-              <TouchableOpacity onPress={() => navigation.navigate('trajeto')}>
-                <Image
-                  source={require('../assets/continuar.png')}
-                  style={{ width: 45, height: 45, marginBottom: 5 }}
+      <ScrollView
+        contentInsetAdjustmentBehavior='always'>
+        <View style={{ height: height * 0.75, marginBottom: 90 }}>
+          <ImageMapper
+            imgHeight={440}
+            imgWidth={240}
+            imgSource={{
+              uri: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Mapa_de_Portugal_-_Distritos_plain.png',
+            }}
+            imgMap={districts}
+            onPress={(item, idx, event) => {
+              setSelectedArea(item.name), setSelectedAreaId(item.id);
+            }}
+            containerStyle={{ alignItems: 'center', paddingTop: 15, paddingBottom: 10 }}
+            selectedAreaId={selectedAreaId}
+          />
+          <View style={styles.bottomContainer}>
+            {selectedArea ?
+              <View style={{
+                backgroundColor: "#ED6F6F", width: 340, height: 140, borderRadius: 8,
+              }}>
+                <Text style={{ color: "#FFFFFF", fontSize: 20, marginLeft: 15, fontWeight: 'bold', marginTop: 15 }}>
+                  {selectedArea}
+                </Text>
+                <SelectList
+                  setSelected={setHospitals} data={hospitals}
+                  boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
+                  inputStyles={{ color: "#001D6E", fontWeight: "bold", backgroundColor: "#FFFFFF" }}
+                  save="value"
+                  placeholder="Selecione o hospital"
+                  dropdownStyles={{ backgroundColor: "#FFFFFF" }}
                 />
-              </TouchableOpacity>
-            </View>
+                <View style={{ alignItems: 'center' }}>
+                  <TouchableOpacity onPress={() => navigation.navigate('trajeto')}>
+                    <Image
+                      source={require('../assets/continuar.png')}
+                      style={{ width: 45, height: 45, marginBottom: 5 }}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+              : <>
+                <Text style={styles.Text}>
+                  Selecione no mapa o distrito do
+                </Text>
+                <Text style={styles.Text}>
+                  hospital que irá visitar
+                </Text>
+              </>}
           </View>
-          : null}
-      </View>
+        </View>
+      </ScrollView>
     </View>
   );
 }
