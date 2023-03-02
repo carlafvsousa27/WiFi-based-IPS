@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFFFFF"
     },
     menu: {
-        paddingTop: 55,
+        paddingTop: 65,
         paddingLeft: 250,
         width: 390,
         height: 100,

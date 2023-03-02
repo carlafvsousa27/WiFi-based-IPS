@@ -124,27 +124,26 @@ const SelecaoHospital = ({ navigation }) => {
           <View style={styles.bottomContainer}>
             {selectedArea ?
               <View style={{
-                backgroundColor: "#ED6F6F", width: 340, height: 140, borderRadius: 8,
+                backgroundColor: "#ED6F6F", width: 340, height: 140, borderRadius: 8, position: 'relative'
               }}>
                 <Text style={{ color: "#FFFFFF", fontSize: 20, marginLeft: 15, fontWeight: 'bold', marginTop: 15 }}>
                   {selectedArea}
                 </Text>
                 <SelectList
                   setSelected={setHospitals} data={hospitals}
-                  boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
+                  boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 300, alignItems: 'center', marginHorizontal: 10, marginVertical: 5 }}
                   inputStyles={{ color: "#001D6E", fontWeight: "bold", backgroundColor: "#FFFFFF" }}
                   save="value"
                   placeholder="Selecione o hospital"
-                  dropdownStyles={{ backgroundColor: "#FFFFFF" }}
+                  dropdownStyles={{ backgroundColor: "#FFFFFF", position: "relative", zIndex: 1 }}
                 />
-                <View style={{ alignItems: 'center' }}>
-                  <TouchableOpacity onPress={() => navigation.navigate('trajeto')}>
-                    <Image
-                      source={require('../assets/continuar.png')}
-                      style={{ width: 45, height: 45, marginBottom: 5 }}
-                    />
-                  </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={() => navigation.navigate('trajeto')} style={{ position: "absolute", zIndex: -1, bottom: 1, width: "100% " }}>
+                  <Image
+                    source={require('../assets/continuar.png')}
+                    style={{ width: 45, height: 45, margin: "auto" }}
+                  />
+                </TouchableOpacity>
+
               </View>
               : <>
                 <Text style={styles.Text}>

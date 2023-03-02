@@ -4,6 +4,7 @@ import { View, StyleSheet, TouchableOpacity, Image, Text, useWindowDimensions, S
 import SelectList from 'react-native-dropdown-select-list';
 
 
+
 const styles = StyleSheet.create({
   page: {
     backgroundColor: '#4B56D2',
@@ -11,13 +12,13 @@ const styles = StyleSheet.create({
     width: 391
   },
   topContainer: {
-    paddingTop: 50,
+    paddingTop: 70,
     paddingBottom: 5,
     alignItems: 'center'
   },
   mediumContainer: {
     height: 500,
-    paddingTop: 10,
+    paddingTop: 5,
     alignItems: 'center'
   },
   bottomContainer: {
@@ -86,45 +87,43 @@ const Trajeto = ({ navigation }) => {
     getRoutes({ start: selectedStart, finish: selectedFinish }).then(response => { setImage(response.image), setShow(true) /*, document.getElementById("image").src = response.image */ });
   }
 
+
   return (
     <View style={styles.page}>
       <View style={styles.topContainer}>
-        <View>
-          <SelectList
-            setSelected={setSelectedStart} data={locals}
-            boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 320, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
-            inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
-            save="value"
-            placeholder="Onde se encontra?"
-            dropdownStyles={{ backgroundColor: "#FFFFFF" }}
-          />
-        </View>
+        <SelectList
+          setSelected={setSelectedStart} data={locals}
+          boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 320, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
+          inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
+          save="value"
+          placeholder="Onde se encontra?"
+          dropdownStyles={{ backgroundColor: "#FFFFFF" }}
+        />
       </View>
       <View style={styles.mediumContainer}>
-        <View>
-          <SelectList
-            setSelected={setSelectedFinish} data={locals}
-            boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 320, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
-            inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
-            save="value"
-            placeholder="Destino?"
-            dropdownStyles={{ backgroundColor: "#FFFFFF" }}
-          />
-        </View>
-        <View>
+        <SelectList
+          setSelected={setSelectedFinish} data={locals}
+          boxStyles={{ borderRadius: 6, backgroundColor: "#FFFFFF", height: 40, width: 320, alignItems: 'center', marginHorizontal: 10, marginVertical: 5, opacity: 1 }}
+          inputStyles={{ color: "#001D6E", fontWeight: "bold" }}
+          save="value"
+          placeholder="Destino?"
+          dropdownStyles={{ backgroundColor: "#FFFFFF" }}
+        />
+        <View style={{ marginBottom: 10 }}>
           <TouchableOpacity
             onPress={getTrajeto}
-            style={{ paddingHorizontal: 30, paddingVertical: 10, borderRadius: 8, backgroundColor: '#ED6F6F', marginTop: 7 }}
-          >
+            style={{ paddingHorizontal: 30, paddingVertical: 10, borderRadius: 8, backgroundColor: '#ED6F6F', marginTop: 10 }}>
             <Text style={{ color: "#FFFFFF", fontWeight: "bold" }}>
               OK
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={{ marginTop: 20 }}>
+        <View
+          contentContainerStyle={{ height: 520 }}
+        >
           {show ?
             <Image id='image' source={{ uri: image }}
-              style={{ width: 340, height: 520, overflow: "hidden" }}>
+              style={{ width: 340, height: 520, overflow: "hidden", resizeMode: 'contains' }}>
             </Image>
             : null}
         </View>
