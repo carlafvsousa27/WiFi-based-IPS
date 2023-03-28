@@ -137,10 +137,10 @@ const SelecaoHospital = ({ navigation }) => {
                   placeholder="Selecione o hospital"
                   dropdownStyles={{ backgroundColor: "#FFFFFF", position: "relative", zIndex: 1 }}
                 />
-                <TouchableOpacity onPress={() => navigation.navigate('trajeto')} style={{ position: "absolute", zIndex: -1, bottom: 1, width: "100% " }}>
+                <TouchableOpacity onPress={() => navigation.navigate('trajeto')} style={{ position: "absolute", zIndex: -1, bottom: 1, width: 390 }}>
                   <Image
                     source={require('../assets/continuar.png')}
-                    style={{ width: 45, height: 45, margin: "auto" }}
+                    style={{ width: 45, height: 45, marginHorizontal: "38%" }}
                   />
                 </TouchableOpacity>
 

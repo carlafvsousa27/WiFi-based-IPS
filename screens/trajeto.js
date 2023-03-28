@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { getAllLocals, getRoutes } from './baseAPI';
-import { View, StyleSheet, TouchableOpacity, Image, Text, useWindowDimensions, ScrollView } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native';
 import SelectList from 'react-native-dropdown-select-list';
-
+import { ScrollView } from 'react-native-web';
 
 
 const styles = StyleSheet.create({
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   mediumContainer: {
-    height: 500,
+    height: 'auto',
     paddingTop: 5,
     alignItems: 'center'
   },
@@ -66,27 +66,38 @@ const styles = StyleSheet.create({
 });
 
 
-
 const Trajeto = ({ navigation }) => {
   const [selectedStart, setSelectedStart] = React.useState("");
   const [selectedFinish, setSelectedFinish] = React.useState("");
   const [locals, setLocals] = React.useState([]);
   const [show, setShow] = React.useState(false);
   const [image, setImage] = React.useState("");
-  const { width, height } = useWindowDimensions();
+  const [position, setPosition] = React.useState([]);
+  const [arrayPositions, setArrayPosition] = React.useState([])
+  let index = 0;
+
+  const getTrajeto = () => {
+    getRoutes({ start: selectedStart, finish: selectedFinish }).then(response => { setImage(response.image), setShow(true), setArrayPosition(response.arrow) /*, document.getElementById("image").src = response.image */ });
+  }
+
   useEffect(() => {
     getAllLocals().then(response => setLocals(response))
   }, [])
   useEffect(() => {
-    console.log(selectedStart, selectedFinish)
+    console.log("trajeto: ", selectedStart, selectedFinish)
   }, [selectedStart, selectedFinish])
 
-  useEffect(() => { console.log(image) }, [image])
+  useEffect(() => { console.log("imagem: ", image) }, [image])
 
-  const getTrajeto = () => {
-    getRoutes({ start: selectedStart, finish: selectedFinish }).then(response => { setImage(response.image), setShow(true) /*, document.getElementById("image").src = response.image */ });
-  }
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPosition(arrayPositions[index]);
+      index = (index + 1);
+    }, 5000);
+    if (index >= arrayPositions.length) {
+      return () => clearInterval(interval);
+    }
+  }, [arrayPositions]);
 
   return (
     <View style={styles.page}>
@@ -118,15 +129,17 @@ const Trajeto = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
         </View>
-        <View
-          contentContainerStyle={{ height: 520 }}
-        >
-          {show ?
+        {show ?
+          <View
+            horizontal={true}
+            contentContainerStyle={{ width: 340, height: 520, overflow: "hidden", }}
+          >
             <Image id='image' source={{ uri: image }}
-              style={{ width: 340, height: 520, overflow: "hidden", resizeMode: 'contains' }}>
-            </Image>
-            : null}
-        </View>
+              style={{ width: 340, height: 520, resizeMode: 'cover', position: 'relative' }} />
+            {position && <Image
+              source={require('../assets/seta-direita.png')} style={{ width: 30, height: 30, position: 'absolute', left: position.x, top: position.y }} />}
+          </View>
+          : null}
         <View style={styles.bottomContainer}>
           <View style={{ paddingHorizontal: 110, borderRadius: 4, alignItems: "left" }}>
             <TouchableOpacity
